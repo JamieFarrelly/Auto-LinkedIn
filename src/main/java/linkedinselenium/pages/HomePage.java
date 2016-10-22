@@ -6,9 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends PageObject {
     
-    @FindBy(id="main-search-box")
-    private WebElement searchInput;
-    
     @FindBy(className="search-button") // doesn't have an ID
     private WebElement searchButton; 
 
@@ -16,13 +13,8 @@ public class HomePage extends PageObject {
         super(driver);
     }
     
-    public void enterSearchTerm(String searchTerm) {
-        this.searchInput.clear();
-        this.searchInput.sendKeys(searchTerm);
-    }
-    
-    public SearchResultsPage clickSearchButton() {
+    public SearchPage clickSearchButton() {
         searchButton.click();
-        return new SearchResultsPage(driver);
+        return new SearchPage(driver);
     }
 }

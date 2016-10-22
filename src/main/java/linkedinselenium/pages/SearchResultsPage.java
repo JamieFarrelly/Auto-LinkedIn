@@ -11,10 +11,18 @@ import org.openqa.selenium.support.FindBy;
 public class SearchResultsPage extends PageObject {
     
     @FindBy(css="#results > .people > .result-image") // LinkedIn shows more than just people in results, like ads etc - this filters them out
-    List<WebElement> userImages;
+    private List<WebElement> userImages;
+    
+    @FindBy(className="search-button") // doesn't have an ID
+    private WebElement searchButton; 
 
     public SearchResultsPage(WebDriver driver) {
         super(driver);
+    }
+    
+    public SearchPage clickSearchButton() {
+        searchButton.click();
+        return new SearchPage(driver);
     }
     
     /**
