@@ -13,7 +13,7 @@ public class LoginPage extends PageObject {
     private WebElement passwordInput;
     
     @FindBy(id="btn-primary")
-    private WebElement submitButton;
+    private WebElement loginButton;
     
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -29,8 +29,8 @@ public class LoginPage extends PageObject {
         this.passwordInput.sendKeys(password);
     }
     
-    public HomePage submit() {
-        submitButton.click();
+    public HomePage clickLoginButton() {
+        loginButton.click();
         return new HomePage(driver);
     }
 }

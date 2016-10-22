@@ -2,7 +2,9 @@ package linkedinselenium.test;
 import org.junit.Test;
 
 import linkedinselenium.Constants;
+import linkedinselenium.pages.HomePage;
 import linkedinselenium.pages.LoginPage;
+import linkedinselenium.pages.SearchResultsPage;
 
 public class SearchUsersTest extends BaseTest {
 
@@ -14,7 +16,11 @@ public class SearchUsersTest extends BaseTest {
         
         loginPage.enterEmailAddress("contact@gmail.com");
         loginPage.enterPassword("notmypassword");
-        loginPage.submit();
+        
+        HomePage homePage = loginPage.clickLoginButton();
+        homePage.enterSearchTerm("google recruiter");
+        
+        SearchResultsPage searchResultsPage = homePage.clickSearchButton();
+        searchResultsPage.clickAllUsersProfiles();
     }
-    
 }
